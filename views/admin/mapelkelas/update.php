@@ -102,15 +102,17 @@
 
         <!-- Form Tambah Mapel Kelas -->
             <form action="/kelas_b/team_1/mapelkelas/update" method="post" id="createForm">
+                <input type="hidden" name="id" value="<?= $data['id']; ?>">
             <!-- Pilih Mata Pelajaran -->
             <div class="form-group">
                 <label for="mapel_id">Mata Pelajaran</label>
-                <select name="mapel_id" id="mapel_id" class="form-control" required>
+                <select name="mapel" id="mapel_id" class="form-control" required>
                     <option value="" disabled selected>Pilih Mata Pelajaran</option>
-                    <?php foreach ($mapel as $m): ?>
-                        <option value="<?= htmlspecialchars($m['id']) ?>">
-                            <?= htmlspecialchars($m['nama']) ?>
-                        </option>
+                    <?php foreach ($mapel as $row): ?>
+                        <option value="<?= htmlspecialchars($row['id']); ?>" 
+                                        <?= $row['id'] == $data['id_mapel'] ? 'selected' : ''; ?>>
+                                        <?= htmlspecialchars($row['nama']); ?>
+                                    </option>
                     <?php endforeach; ?>
                 </select>
                 <?php if (isset($errors['mapel_id'])): ?>
@@ -123,12 +125,13 @@
             <!-- Pilih Kelas -->
             <div class="form-group">
                 <label for="kelas_id">Kelas</label>
-                <select name="kelas_id" id="kelas_id" class="form-control" required>
+                <select name="kelas" id="kelas_id" class="form-control" required>
                     <option value="" disabled selected>Pilih Kelas</option>
-                    <?php foreach ($kelas as $k): ?>
-                        <option value="<?= htmlspecialchars($k['id']) ?>">
-                            <?= htmlspecialchars($k['nama']) ?>
-                        </option>
+                    <?php foreach ($kelas as $row): ?>
+                        <option value="<?= htmlspecialchars($row['id']); ?>" 
+                                        <?= $row['id'] == $data['id_kelas'] ? 'selected' : ''; ?>>
+                                        <?= htmlspecialchars($row['kelas']); ?>
+                                    </option>
                     <?php endforeach; ?>
                 </select>
                 <?php if (isset($errors['kelas_id'])): ?>
@@ -141,12 +144,13 @@
             <!-- Pilih Guru -->
             <div class="form-group">
                 <label for="guru_id">Guru</label>
-                <select name="guru_id" id="guru_id" class="form-control" required>
+                <select name="guru" id="guru_id" class="form-control" required>
                     <option value="" disabled selected>Pilih Guru</option>
-                    <?php foreach ($guru as $g): ?>
-                        <option value="<?= htmlspecialchars($g['id']) ?>">
-                            <?= htmlspecialchars($g['nama']) ?>
-                        </option>
+                    <?php foreach ($guru as $row): ?>
+                        <option value="<?= htmlspecialchars($row['id']); ?>" 
+                                        <?= $row['id'] == $data['id_guru'] ? 'selected' : ''; ?>>
+                                        <?= htmlspecialchars($row['nama']); ?>
+                                    </option>
                     <?php endforeach; ?>
                 </select>
                 <?php if (isset($errors['guru_id'])): ?>

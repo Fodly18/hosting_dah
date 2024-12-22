@@ -23,8 +23,9 @@ class HomeController extends Controller
         }
 
         $jadwal = DB::table('jadwal')
-                ->join('kelas', 'jadwal.id_kelas', '=', 'kelas.id')
-                ->join('mapel', 'jadwal.id_mapel', '=', 'mapel.id')
+                ->join('mapel_kelas', 'jadwal.id_mapel_kelas', '=', 'mapel_kelas.id')
+                ->join('kelas', 'mapel_kelas.id_kelas', 'kelas.id')
+                ->join('mapel', 'mapel_kelas.id_mapel', 'mapel.id')
                 ->where('kelas.id', '=', $user->id_kelas)
                 ->select(['jadwal.id', 'mapel.nama', 'jadwal.hari', 'jadwal.jam_mulai', 'jadwal.jam_selesai'])
                 ->get();

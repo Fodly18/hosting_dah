@@ -100,12 +100,12 @@
                 <?php endif; ?>
 
                 <form action="/kelas_b/team_1/kelas/update" method="post" id="updateForm" onsubmit="return validateForm()">
-                    <input type="hidden" name="id" value="<?= htmlspecialchars($data->id) ?>">
+                    <input type="hidden" name="id" value="<?= htmlspecialchars($data['id']) ?>">
                     
                     <div class="form-group">
                         <label for="nama">Nama Kelas</label>
                         <input type="text" class="form-control" id="kelas" name="kelas" required 
-                               maxlength="2" aria-describedby="namaHint">
+                               maxlength="2" aria-describedby="namaHint" value="<?= $data['kelas']; ?>">
                         <div id="namaHint" class="form-hint">Masukkan nama kelas</div>
                         <?php if (isset($errors['kelas'])): ?>
                             <?php foreach ($errors['kelas'] as $error): ?>
@@ -115,15 +115,18 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="guru">Guru</label>
-                        <select class="form-control" id="guru" name="guru" required>
-                            <option value="" disabled selected>-- Pilih Guru --</option>
-                            <?php foreach ($data as $row): ?>
-                                <option value="<?= htmlspecialchars($row['id']); ?>">
-                                    <?= htmlspecialchars($row['guru']); ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
+                            <label for="guru">Guru</label>
+                            <select class="form-control" id="guru" name="guru" required>
+                                <option value="" disabled>-- Pilih Guru --</option>
+                                <?php foreach ($dataGuru as $row): ?>
+                                    <option value="<?= htmlspecialchars($row['id']); ?>" 
+                                        <?= $row['id'] == $data['id_guru'] ? 'selected' : ''; ?>>
+                                        <?= htmlspecialchars($row['nama']); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+
+
                         </div>
                         
                     <div class="btn-container">

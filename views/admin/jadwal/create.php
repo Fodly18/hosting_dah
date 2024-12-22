@@ -104,35 +104,17 @@
     <form action="/kelas_b/team_1/jadwal/create" method="post" id="createForm">
         <!-- Mata Pelajaran -->
         <div class="form-group">
-            <label for="mapel">Mata Pelajaran</label>
-            <select class="form-control" id="mapel" name="mapel" required>
-                <option value="" disabled selected>-- Pilih Mata Pelajaran --</option>
-                <?php foreach ($mapelData as $row): ?>
-                    <option value="<?= htmlspecialchars($row['id']); ?>" 
-                        <?= isset($selectedMapel) && $selectedMapel == $row['id'] ? 'selected' : ''; ?>>
-                        <?= htmlspecialchars($row['nama']); ?>
+            <label for="mapel">Mata Pelajaran Kelas</label>
+            <select class="form-control" id="mapel" name="mapel_kelas" required>
+                <option value="" disabled selected>-- Pilih Mapel Kelas --</option>
+                <?php foreach ($mapelkelas as $row): ?>
+                    <option value="<?= htmlspecialchars($row['id']); ?>">
+                    <?= htmlspecialchars($row['nama'] . ' | ' . $row['kelas']); ?>
                     </option>
                 <?php endforeach; ?>
             </select>
             <?php if (isset($errors['mapel'])): ?>
                 <div class="error-message"><?= htmlspecialchars($errors['mapel'][0]) ?></div>
-            <?php endif; ?>
-        </div>
-
-        <!-- Kelas -->
-        <div class="form-group">
-            <label for="kelas">Kelas</label>
-            <select class="form-control" id="kelas" name="kelas" required>
-                <option value="" disabled selected>-- Pilih Kelas --</option>
-                <?php foreach ($kelasData as $row): ?>
-                    <option value="<?= htmlspecialchars($row['id']); ?>" 
-                        <?= isset($selectedKelas) && $selectedKelas == $row['id'] ? 'selected' : ''; ?>>
-                        <?= htmlspecialchars($row['kelas']); ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
-            <?php if (isset($errors['kelas'])): ?>
-                <div class="error-message"><?= htmlspecialchars($errors['kelas'][0]) ?></div>
             <?php endif; ?>
         </div>
 
