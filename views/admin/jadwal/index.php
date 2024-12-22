@@ -83,7 +83,7 @@
         <div class="left">
             <h1>Data Jadwal</h1>
             <ul class="breadcrumb">
-                <li><a href="/kelas_b/team_1/admin">Dashboard</a></li>
+                <li><a href="/admin">Dashboard</a></li>
                 <li><i class='bx bx-chevron-right'></i></li>
                 <li><a class="active" href="#">Data Jadwal</a></li>
             </ul>
@@ -101,7 +101,6 @@
                     <th>No</th>
                     <th>Nama Mata Pelajaran</th>
                     <th>Nama Kelas</th>
-                    <th>Nama Guru</th>
                     <th>Hari</th>
                     <th>Jam</th>
                     <th>Action</th>
@@ -119,9 +118,8 @@
                     <?php $no = 1; foreach ($data as $row): ?>
                         <tr>
                             <td><?= $no++; ?></td>
-                            <td><?= htmlspecialchars($row['nama_mapel']); ?></td>
-                            <td><?= htmlspecialchars($row['nama_kelas']); ?></td>
-                            <td><?= htmlspecialchars($row['nama_guru']); ?></td>
+                            <td><?= htmlspecialchars($row['mapel']); ?></td>
+                            <td><?= htmlspecialchars($row['kelas']); ?></td>
                             <td><?= htmlspecialchars($row['hari']); ?></td>
                             <td><?= htmlspecialchars($row['jam_mulai']) . " - " . htmlspecialchars($row['jam_selesai']); ?></td>
                             <td class="action-buttons">
