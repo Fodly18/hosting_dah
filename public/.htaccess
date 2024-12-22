@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Izinkan akses langsung ke file/folder img_gallery_acara_sekolah
+    RewriteCond %{REQUEST_URI} ^/kelas_b/team_1/img_gallery_acara_sekolah/ [NC]
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+    
+    # Redirect semua permintaan ke index.php
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [L]
+</IfModule>

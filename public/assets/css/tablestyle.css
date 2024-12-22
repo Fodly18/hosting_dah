@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.table-container {
+    margin-top: 20px;
+    width: 100%;
+    overflow-x: auto;
+    background: var(--light);
+    padding-right: 18px;
+    padding-left: 18px;
+    padding-top: 12px;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.data-table th {
+    background: var(--blue);
+    color: var(--light);
+    padding: 12px 16px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.data-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--grey);
+    color: var(--dark);
+}
+
+.data-table tbody tr:hover {
+    background: var(--grey);
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: var(--dark-grey);
+}
+
+.empty-state i {
+    font-size: 48px;
+    margin-bottom: 16px;
+    color: var(--dark-grey);
+}
+
+/* Button Styles */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: var(--blue);
+    color: var(--light);
+    margin-right: 10px;
+}
+
+.btn-primary:hover {
+    background: #2d7ac7;
+}
+
+.btn-success {
+    background: #28a745;
+    color: var(--light);
+}
+
+.btn-success:hover {
+    background: #218838;
+}
+
+.btn-danger {
+    background: var(--red);
+    color: var(--light);
+}
+
+.btn-danger:hover {
+    background: #c82333;
+}
+
+.btn i {
+    font-size: 16px;
+}
+
+/* Action Buttons Container */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* Dark Mode Adjustments */
+body.dark .table-container {
+    background: var(--dark);
+}
+
+body.dark .data-table td {
+    border-bottom-color: #2d3436;
+}
+
+body.dark .data-table tbody tr:hover {
+    background: #1e272e;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .table-container {
+        padding: 16px;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 8px;
+    }
+
+    .btn {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .action-buttons {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Keep existing responsive styles */
+/* ... [previous responsive styles remain unchanged] ... */
+
+
+/* Styling Pada Pengumpulan Tugas */
+
+/* Style Filter */
+.select {
+    display: inline-block;
+    width: auto;
+    min-width: 600px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 8px 12px;
+    color: #333;
+    background-color: #eee;
+    border: 2px solid #bbb;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: left;
+    text-align-last: center;
+    transition: border-color 0.3s ease;
+}
+
+.select:focus,
+.select:hover {
+    outline: none;
+    border: 2px solid #169dea;
+}
+
+.select option {
+    background: #fff;
+    color: #333;
+    padding: 4px;
+    text-align: left;
+}
+
+.btn-select {
+    margin-left: 16px;
+    padding: 8px 12px;
+    color: #eee;
+    background-color: #169dea;
+    font-size: 14px;
+    cursor: pointer;
+    border: 2px solid #169dea;
+    border-radius: 10px;
+}
+
+/* Style Inside Div Show*/
+
+.show-tugas-siswa{
+    margin-top: 20px;
+    width: 100%;
+    overflow-x: auto;
+    background: var(--light);
+    padding-right: 18px;
+    padding-left: 18px;
+    padding-top: 12px;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.show-tugas-siswa label{
+    font-size: 18px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.show-tugas-siswa button{
+    font-size: 18px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.bukti-foto{
+    width: 400px;         
+    height: 400px;
+    object-fit: contain; 
+    object-position: center;
+}
+/* Style filter nilai */
+
+.select-nilai {
+    display: inline-block;
+    width: auto;
+    min-width: 100px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    
+    padding: 8px 12px;
+    color: #333;
+    background-color: #eee;
+    border: 2px solid #bbb;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: left;
+    text-align-last: center;
+    transition: border-color 0.3s ease;
+}
+
+.select-nilai:focus,
+.select-nilai:hover {
+    outline: none;
+    border: 2px solid #169dea;
+}
+
+.select-nilai option {
+    background: #fff;
+    color: #333;
+    padding: 4px;
+    text-align: left;
+}
+
+.search-bar-container {
+	width: 300px;  /* Menentukan panjang container */
+	margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 10px;
+	background: var(--light);
+}
+
+.search-bar-container input {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+	background: var(--grey);
+    outline: none;
+    width: 300px;
+    border-radius: 5px; /* Membuat input lebih halus */
+}
+
+.search-bar-container i {
+    font-size: 20px;
+    color: #555;
+	margin-top: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
