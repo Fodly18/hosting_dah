@@ -102,9 +102,9 @@
         <form action="/kelas_b/team_1/mapelkelas/create" method="post" id="createForm">
             <div class="form-group">
             <label for="nama">Mata Pelajaran</label>
-            <select class="form-control" id="nama" name="nama" required>
+            <select class="form-control" id="nama" name="mapel" required>
                 <option value="" disabled selected>-- Pilih Mata Pelajaran --</option>
-                <?php foreach ($data as $row): ?>
+                <?php foreach ($mapel as $row): ?>
                     <option value="<?= htmlspecialchars($row['id']); ?>">
                         <?= htmlspecialchars($row['nama']); ?>
                     </option>
@@ -116,9 +116,9 @@
             <label for="guru">Guru</label>
             <select class="form-control" id="guru" name="guru" required>
                 <option value="" disabled selected>-- Pilih Guru --</option>
-                <?php foreach ($data as $row): ?>
+                <?php foreach ($guru as $row): ?>
                     <option value="<?= htmlspecialchars($row['id']); ?>">
-                        <?= htmlspecialchars($row['guru']); ?>
+                        <?= htmlspecialchars($row['nama']); ?>
                     </option>
                 <?php endforeach; ?>
             </select>
@@ -128,7 +128,7 @@
             <label for="kelas">Kelas</label>
             <select class="form-control" id="kelas" name="kelas" required>
                 <option value="" disabled selected>-- Pilih Kelas --</option>
-                <?php foreach ($data as $row): ?>
+                <?php foreach ($kelas as $row): ?>
                     <option value="<?= htmlspecialchars($row['id']); ?>">
                         <?= htmlspecialchars($row['kelas']); ?>
                     </option>

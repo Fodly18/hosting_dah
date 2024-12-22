@@ -102,83 +102,49 @@
         <?php endif; ?>
 
         <!-- Form Update Jadwal -->
-        <form action="/kelas_b/team_1/jadwal/update/<?= htmlspecialchars($jadwal['id']); ?>" method="post" id="updateForm">
-            <!-- Pilih Mata Pelajaran -->
-            <div class="form-group">
-                <label for="mapel_id">Mata Pelajaran</label>
-                <select name="mapel_id" id="mapel_id" class="form-control" required>
-                    <option value="" disabled>Pilih Mata Pelajaran</option>
-                    <?php foreach ($mapel as $m): ?>
-                        <option value="<?= htmlspecialchars($m['id']) ?>" <?= $jadwal['mapel_id'] == $m['id'] ? 'selected' : '' ?>>
-                            <?= htmlspecialchars($m['nama']) ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-                <?php if (isset($errors['mapel_id'])): ?>
-                    <?php foreach ($errors['mapel_id'] as $error): ?>
-                        <div class="error-message"><?= htmlspecialchars($error) ?></div>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </div>
+        <form action="/kelas_b/team_1/jadwal/update" method="post" id="createForm">
+        <input type="hidden" name="id" value="<?= htmlspecialchars($data['id']) ?>">
+        <!-- Mata Pelajaran -->
+        <div class="form-group">
+            <label for="mapel">Mata Pelajaran Kelas</label>
+            <select class="form-control" id="mapel" name="mapel_kelas" required>
+                <option value="" disabled selected>-- Pilih Mapel Kelas --</option>
+                <?php foreach ($mapelkelas as $row): ?>
+                    <option value="<?= htmlspecialchars($row['id']); ?>" 
+                                        <?= $row['id'] == $data['id_mapel_kelas'] ? 'selected' : ''; ?>>
+                                        <?= htmlspecialchars($row['nama'] . ' | ' . $row['kelas']); ?>
+                                    </option>
+                <?php endforeach; ?>
+            </select>
+            <?php if (isset($errors['mapel'])): ?>
+                <div class="error-message"><?= htmlspecialchars($errors['mapel'][0]) ?></div>
+            <?php endif; ?>
+        </div>
 
-            <!-- Pilih Kelas -->
-            <div class="form-group">
-                <label for="kelas_id">Kelas</label>
-                <select name="kelas_id" id="kelas_id" class="form-control" required>
-                    <option value="" disabled>Pilih Kelas</option>
-                    <?php foreach ($kelas as $k): ?>
-                        <option value="<?= htmlspecialchars($k['id']) ?>" <?= $jadwal['kelas_id'] == $k['id'] ? 'selected' : '' ?>>
-                            <?= htmlspecialchars($k['nama']) ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-                <?php if (isset($errors['kelas_id'])): ?>
-                    <?php foreach ($errors['kelas_id'] as $error): ?>
-                        <div class="error-message"><?= htmlspecialchars($error) ?></div>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </div>
+                <div class="form-group">
+        <label for="hari">Hari</label>
+        <select class="form-control" id="hari" name="hari" required>
+            <option value="" disabled>-- Pilih Hari --</option>
+            <option value="Senin" <?= $data['hari'] === 'Senin' ? 'selected' : ''; ?>>Senin</option>
+            <option value="Selasa" <?= $data['hari'] === 'Selasa' ? 'selected' : ''; ?>>Selasa</option>
+            <option value="Rabu" <?= $data['hari'] === 'Rabu' ? 'selected' : ''; ?>>Rabu</option>
+            <option value="Kamis" <?= $data['hari'] === 'Kamis' ? 'selected' : ''; ?>>Kamis</option>
+            <option value="Jumat" <?= $data['hari'] === 'Jumat' ? 'selected' : ''; ?>>Jumat</option>
+            <option value="Sabtu" <?= $data['hari'] === 'Sabtu' ? 'selected' : ''; ?>>Sabtu</option>
+            <option value="Minggu" <?= $data['hari'] === 'Minggu' ? 'selected' : ''; ?>>Minggu</option>
+        </select>
 
-            <!-- Pilih Guru -->
-            <div class="form-group">
-                <label for="guru_id">Guru</label>
-                <select name="guru_id" id="guru_id" class="form-control" required>
-                    <option value="" disabled>Pilih Guru</option>
-                    <?php foreach ($guru as $g): ?>
-                        <option value="<?= htmlspecialchars($g['id']) ?>" <?= $jadwal['guru_id'] == $g['id'] ? 'selected' : '' ?>>
-                            <?= htmlspecialchars($g['nama']) ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-                <?php if (isset($errors['guru_id'])): ?>
-                    <?php foreach ($errors['guru_id'] as $error): ?>
-                        <div class="error-message"><?= htmlspecialchars($error) ?></div>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </div>
+        <?php if (isset($errors['hari'])): ?>
+            <?php foreach ($errors['hari'] as $error): ?>
+                <div class="error-message"><?= htmlspecialchars($error) ?></div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
 
-            <!-- Pilih Hari -->
-            <div class="form-group">
-                <label for="hari">Hari</label>
-                <select name="hari" id="hari" class="form-control" required>
-                    <option value="" disabled>Pilih Hari</option>
-                    <?php foreach (['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'] as $hari): ?>
-                        <option value="<?= $hari ?>" <?= $jadwal['hari'] == $hari ? 'selected' : '' ?>>
-                            <?= $hari ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-                <?php if (isset($errors['hari'])): ?>
-                    <?php foreach ($errors['hari'] as $error): ?>
-                        <div class="error-message"><?= htmlspecialchars($error) ?></div>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </div>
 
-            <!-- Jam Mulai dan Jam Selesai -->
             <div class="form-group">
                 <label for="jam_mulai">Jam Mulai</label>
-                <input type="time" name="jam_mulai" id="jam_mulai" class="form-control" value="<?= htmlspecialchars($jadwal['jam_mulai']); ?>" required>
+                <input type="time" class="form-control" id="jam_mulai" name="jam_mulai" required value="<?= htmlspecialchars($data['jam_mulai']) ?>">
                 <?php if (isset($errors['jam_mulai'])): ?>
                     <?php foreach ($errors['jam_mulai'] as $error): ?>
                         <div class="error-message"><?= htmlspecialchars($error) ?></div>
@@ -188,7 +154,7 @@
 
             <div class="form-group">
                 <label for="jam_selesai">Jam Selesai</label>
-                <input type="time" name="jam_selesai" id="jam_selesai" class="form-control" value="<?= htmlspecialchars($jadwal['jam_selesai']); ?>" required>
+                <input type="time" class="form-control" id="jam_selesai" name="jam_selesai" required value="<?= htmlspecialchars($data['jam_selesai']) ?>">
                 <?php if (isset($errors['jam_selesai'])): ?>
                     <?php foreach ($errors['jam_selesai'] as $error): ?>
                         <div class="error-message"><?= htmlspecialchars($error) ?></div>
@@ -196,7 +162,6 @@
                 <?php endif; ?>
             </div>
 
-            <!-- Tombol Aksi -->
             <div class="btn-container">
                 <button type="submit" class="btn btn-primary">
                     <i class='bx bx-save'></i>

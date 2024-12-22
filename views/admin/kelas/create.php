@@ -119,7 +119,7 @@
                             <option value="" disabled selected>-- Pilih Guru --</option>
                             <?php foreach ($data as $row): ?>
                                 <option value="<?= htmlspecialchars($row['id']); ?>">
-                                    <?= htmlspecialchars($row['guru']); ?>
+                                    <?= htmlspecialchars($row['nama']); ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
