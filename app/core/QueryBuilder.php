@@ -174,4 +174,52 @@ class QueryBuilder
 
     return $result['count'] ?? 0; // Kembalikan jumlah atau 0 jika tidak ada hasil
 }
+
+public function update($data)
+{
+    // Menyiapkan kolom dan nilai untuk update
+    $columns = [];
+    $bindings = [];
+    foreach ($data as $column => $value) {
+        $columns[] = "$column = :$column";
+        $bindings[":$column"] = $value;
+    }
+
+    // Membuat query update
+    $query = "UPDATE {$this->table} SET " . implode(", ", $columns);
+
+    // Menambahkan kondisi (where) jika ada
+    if ($this->conditions) {
+        $query .= ' WHERE ' . implode(' AND ', $this->conditions);
+    }
+
+    // Menyiapkan dan mengeksekusi query
+    $stmt = $this->db->prepare($query);
+    foreach ($bindings as $key => $value) {
+        $stmt->bindValue($key, $value);
+    }
+    $stmt->execute();
+
+    return $stmt; // Mengembalikan statement jika diperlukan
+}
+
+public function insert($data)
+{
+    // Menyiapkan kolom dan nilai untuk insert
+    $columns = implode(", ", array_keys($data));
+    $placeholders = ":" . implode(", :", array_keys($data));
+
+    // Membuat query insert
+    $query = "INSERT INTO {$this->table} ($columns) VALUES ($placeholders)";
+    
+    // Menyiapkan dan mengeksekusi query
+    $stmt = $this->db->prepare($query);
+    foreach ($data as $column => $value) {
+        $stmt->bindValue(":$column", $value);
+    }
+    
+    // Eksekusi query
+    $stmt->execute();
+}
+
 }

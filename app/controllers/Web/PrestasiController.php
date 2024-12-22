@@ -103,13 +103,14 @@ public function update(Request $request)
     $uploadedFile = $_FILES['img'] ?? null;
     $uploadedFileSertifikat = $_FILES['img_sertifikat'] ?? null;
 
+    // Validasi input wajib
     if (empty($judul) || empty($konten) || empty($tanggal)) {
         die("Error: Semua kolom wajib diisi.");
     }
 
     // Ambil data lama dari database
     $prestasi = DB::table('prestasi')
-        ->select(['id', 'img', 'img_sertifikat'])
+        ->select(['id', 'judul', 'konten', 'tanggal', 'img', 'img_sertifikat'])
         ->where('id', '=', $id)
         ->first();
 
@@ -117,71 +118,71 @@ public function update(Request $request)
         die("Error: Data dengan ID $id tidak ditemukan.");
     }
 
+    // Gunakan data lama sebagai default
+    $filePath = $prestasi->img;
+    $filePathSertifikat = $prestasi->img_sertifikat;
+
     $uploadDir = __DIR__ . '/../../../public/img_gallery_Prestasi/';
     if (!is_dir($uploadDir)) {
         mkdir($uploadDir, 0777, true);
     }
 
-    // Tangani file img
-    $filePath = $prestasi->img; // Default ke data lama
+    // Tangani file img jika diunggah
     if ($uploadedFile && $uploadedFile['error'] === UPLOAD_ERR_OK) {
         $fileName = time() . '_' . basename($uploadedFile['name']);
         $newFilePath = '/img_gallery_Prestasi/' . $fileName;
         $newFullPath = $uploadDir . $fileName;
 
-        // Pindahkan file baru ke server
         if (move_uploaded_file($uploadedFile['tmp_name'], $newFullPath)) {
-            // Hapus file lama jika file baru berhasil diunggah
-            if (!empty($prestasi->img)) {
-                $oldFilePath = str_replace('/kelas_b/team_1', '', $prestasi->img);
-                $oldFullPath = __DIR__ . '/../../../public' . $oldFilePath;
-
-                if (file_exists($oldFullPath)) {
-                    unlink($oldFullPath);
-                }
+            // Hapus file lama jika ada
+            if (!empty($prestasi->img) && file_exists(__DIR__ . '/../../../public' . $prestasi->img)) {
+                unlink(__DIR__ . '/../../../public' . $prestasi->img);
             }
-            $filePath = '/kelas_b/team_1' . $newFilePath; // Path baru
+            $filePath = '/kelas_b/team_1' . $newFilePath; // Tambahkan '/kelas_b/team_1'
         } else {
             die("Error: Gagal mengunggah file img.");
         }
     }
 
-    // Tangani file img_sertifikat
-    $filePathSertifikat = $prestasi->img_sertifikat; // Default ke data lama
+    // Tangani file img_sertifikat jika diunggah
     if ($uploadedFileSertifikat && $uploadedFileSertifikat['error'] === UPLOAD_ERR_OK) {
         $fileNameSertifikat = time() . '_sertifikat_' . basename($uploadedFileSertifikat['name']);
         $newFilePathSertifikat = '/img_gallery_Prestasi/' . $fileNameSertifikat;
         $newFullPathSertifikat = $uploadDir . $fileNameSertifikat;
 
-        // Pindahkan file baru ke server
         if (move_uploaded_file($uploadedFileSertifikat['tmp_name'], $newFullPathSertifikat)) {
-            // Hapus file lama jika file baru berhasil diunggah
-            if (!empty($prestasi->img_sertifikat)) {
-                $oldFilePathSertifikat = str_replace('/kelas_b/team_1', '', $prestasi->img_sertifikat);
-                $oldFullPathSertifikat = __DIR__ . '/../../../public' . $oldFilePathSertifikat;
-
-                if (file_exists($oldFullPathSertifikat)) {
-                    unlink($oldFullPathSertifikat);
-                }
+            // Hapus file lama jika ada
+            if (!empty($prestasi->img_sertifikat) && file_exists(__DIR__ . '/../../../public' . $prestasi->img_sertifikat)) {
+                unlink(__DIR__ . '/../../../public' . $prestasi->img_sertifikat);
             }
-            $filePathSertifikat = '/kelas_b/team_1' . $newFilePathSertifikat; // Path baru
+            $filePathSertifikat = '/kelas_b/team_1' . $newFilePathSertifikat; // Tambahkan '/kelas_b/team_1'
         } else {
             die("Error: Gagal mengunggah file img_sertifikat.");
         }
     }
 
     // Update data di database
-    Prestasi::update($id, [
-        'judul' => $judul,
-        'konten' => $konten,
-        'tanggal' => $tanggal,
-        'img' => $filePath, // Tetap gunakan path lama jika tidak ada file baru
-        'img_sertifikat' => $filePathSertifikat // Tetap gunakan path lama jika tidak ada file baru
-    ]);
+    if (
+        isset($_FILES['img']) && $_FILES['img']['error'] === UPLOAD_ERR_NO_FILE &&
+        isset($_FILES['img_sertifikat']) && $_FILES['img_sertifikat']['error'] === UPLOAD_ERR_NO_FILE
+    ) {
+        Prestasi::update($id, [
+            'judul' => $judul,
+            'konten' => $konten,
+            'tanggal' => $tanggal,
+        ]);
+    } else {
+        Prestasi::update($id, [
+            'judul' => $judul,
+            'konten' => $konten,
+            'tanggal' => $tanggal,
+            'img' => $filePath, // Path lama atau baru
+            'img_sertifikat' => $filePathSertifikat, // Path lama atau baru
+        ]);
+    }
 
     return $this->redirect('/kelas_b/team_1/Prestasi')->with('success', 'Data berhasil diperbarui.');
 }
-
 
 
 

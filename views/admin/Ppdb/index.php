@@ -171,6 +171,21 @@
     </div>
 </div>
 
+<!-- Modal Konfirmasi Berhasil ketika sesudah delete -->
+<div id="success-modal" class="modal hidden">
+    <div class="modal-content">
+        <div class="success-content">
+            <div class="trash-bin">
+                <div class="lid"></div>
+                <div class="bin"></div>
+                <div class="trash"></div>
+            </div>
+            <p>Data sudah dihapus!</p>
+        </div>
+    </div>
+</div>
+
+
 
 
 

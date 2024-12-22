@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="/kelas_b/team_1/assets/css/dataguruadmin.css">
-    <link rel="stylesheet" href="/kelas_b/team_1/assets/css/dashboardadmin.css">
+    <link rel="stylesheet" href="/kelas_b/team_1/assets/css/dashboardberita.css">
     <title>Tambah Data Guru - Admin Dashboard</title>
 </head>
 <body>
@@ -163,14 +162,8 @@
         </main>
     </section>
 
-    <script src="/kelas_b/team_1/assets/js/dashboardadmin.js"></script>
+    <script src="/kelas_b/team_1/assets/js/paket-tabel.js"></script>
     <script>
-        // Add dark mode toggle functionality
-        const switchMode = document.getElementById('switch-mode');
-        
-        switchMode.addEventListener('change', function() {
-            document.body.classList.toggle('dark', this.checked);
-        });
 
         // Form validation
         function validateForm() {
