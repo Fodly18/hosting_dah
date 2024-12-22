@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,14 @@
     <link rel="stylesheet" href="/kelas_b/team_1/assets/css/dashboardberita.css">
     <title>Dashboard - Guru Page</title>
 </head>
+
 <body>
     <!-- SIDEBAR -->
     <section id="sidebar">
-    <a href="#" class="brand">
-			<img src="/kelas_b/team_1/assets/img/logo.png" alt="Logo" class="icon" width="60" height="60">
-			<span class="text">SDN 1 KALISAT</span>
-		</a>
+        <a href="#" class="brand">
+            <img src="/kelas_b/team_1/assets/img/logo.png" alt="Logo" class="icon" width="60" height="60">
+            <span class="text">SDN 1 KALISAT</span>
+        </a>
         <ul class="side-menu top">
             <li>
                 <a href="/kelas_b/team_1/dashboard-guru">
@@ -33,7 +35,7 @@
                     <span class="text">Pengumpulan Tugas</span>
                 </a>
             </li>
-            <li >
+            <li>
                 <a href="/kelas_b/team_1/latihan-soal">
                     <i class='bx bxs-message-dots'></i>
                     <span class="text">Latihan Soal</span>
@@ -49,7 +51,7 @@
         <ul class="side-menu">
             <li>
                 <a href="/kelas_b/team_1/logout-guru" class="logout">
-                    <i class='bx bx-exit bx-flip-horizontal' ></i>
+                    <i class='bx bx-exit bx-flip-horizontal'></i>
                     <span class="text">Logout</span>
                 </a>
             </li>
@@ -61,14 +63,14 @@
     <section id="content">
         <!-- NAVBAR -->
         <nav>
-			<i class='bx bx-menu'></i>
-		<!-- mode malam -->
-			<div class="dark-mode-switch">
-        <p>Dark Mode</p>
-        <input type="checkbox" id="switch-mode" hidden>
-        <label for="switch-mode" class="switch-mode"></label>
-    </div>
-		</nav>
+            <i class='bx bx-menu'></i>
+            <!-- mode malam -->
+            <div class="dark-mode-switch">
+                <p>Dark Mode</p>
+                <input type="checkbox" id="switch-mode" hidden>
+                <label for="switch-mode" class="switch-mode"></label>
+            </div>
+        </nav>
         <!-- NAVBAR -->
 
         <!-- MAIN -->
