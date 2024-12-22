@@ -175,20 +175,14 @@
     <section id="content">
         <!-- NAVBAR -->
         <nav>
-            <i class='bx bx-menu'></i>
-            <form action="#">
-                <div class="form-input">
-                    <input type="search" placeholder="Search...">
-                    <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
-                </div>
-            </form>
-            <input type="checkbox" id="switch-mode" hidden>
-            <label for="switch-mode" class="switch-mode"></label>
-            <a href="#" class="profile">
-                <a href="/settings" class="profile">
-                    <img src="img/people.png">
-                </a>
-        </nav>
+			<i class='bx bx-menu'></i>
+			<!-- mode malam -->
+			<div class="dark-mode-switch">
+				<p>Dark Mode</p>
+				<input type="checkbox" id="switch-mode" hidden>
+				<label for="switch-mode" class="switch-mode"></label>
+			</div>
+		</nav>
         <!-- NAVBAR -->
         <main>
             <div class="head-title">

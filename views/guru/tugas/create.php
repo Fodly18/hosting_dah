@@ -12,64 +12,64 @@
 <body>
     <!-- SIDEBAR -->
     <section id="sidebar">
-    <a href="#" class="brand">
-			<img src="/kelas_b/team_1/assets/img/logo.png" alt="Logo" class="icon" width="60" height="60">
-			<span class="text">SDN 1 KALISAT</span>
-		</a>
-		<ul class="side-menu top">
-			<li>
-				<a href="/kelas_b/team_1/dashboard-guru">
-					<i class='bx bxs-dashboard'></i>
-					<span class="text">Dashboard</span>
-				</a>
-			</li>
-			<li class="active">
-				<a href="/kelas_b/team_1/tugas-pembelajaran">
-					<i class='bx bxs-doughnut-chart'></i>
-					<span class="text">Tugas</span>
-				</a>
-			</li>
-			<li>
-				<a href="/kelas_b/team_1/pengumpulan-tugas">
-					<i class='bx bxs-shopping-bag-alt'></i>
-					<span class="text">Pengumpulan Tugas</span>
-				</a>
-			</li>
-			<li>
-				<a href="/kelas_b/team_1/latihan-soal">
-					<i class='bx bxs-book-content'></i>
-					<span class="text">Latihan Soal</span>
-				</a>
-			</li>
-			<li>
-				<a href="/kelas_b/team_1/penilaian-latihan-soal">
-					<i class='bx bx-task'></i>
-					<span class="text">Penilaian Latihan Soal</span>
-				</a>
-			</li>
-		</ul>
-		<ul class="side-menu">
-			<li>
-				<a href="/kelas_b/team_1/logout-guru" class="logout">
-                    <i class='bx bx-exit bx-flip-horizontal' ></i>
-					<span class="text">Logout</span>
-				</a>
-			</li>
-		</ul>
-	</section>
+        <a href="#" class="brand">
+            <img src="/kelas_b/team_1/assets/img/logo.png" alt="Logo" class="icon" width="60" height="60">
+            <span class="text">SDN 1 KALISAT</span>
+        </a>
+        <ul class="side-menu top">
+            <li>
+                <a href="/kelas_b/team_1/dashboard-guru">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="/kelas_b/team_1/tugas-pembelajaran">
+                    <i class='bx bxs-doughnut-chart'></i>
+                    <span class="text">Tugas</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kelas_b/team_1/pengumpulan-tugas">
+                    <i class='bx bxs-shopping-bag-alt'></i>
+                    <span class="text">Pengumpulan Tugas</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kelas_b/team_1/latihan-soal">
+                    <i class='bx bxs-book-content'></i>
+                    <span class="text">Latihan Soal</span>
+                </a>
+            </li>
+            <li>
+                <a href="/kelas_b/team_1/penilaian-latihan-soal">
+                    <i class='bx bx-task'></i>
+                    <span class="text">Penilaian Latihan Soal</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a href="/kelas_b/team_1/logout-guru" class="logout">
+                    <i class='bx bx-exit bx-flip-horizontal'></i>
+                    <span class="text">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </section>
 
     <!-- CONTENT -->
     <section id="content">
         <!-- NAVBAR -->
         <nav>
-			<i class='bx bx-menu'></i>
-		<!-- mode malam -->
-			<div class="dark-mode-switch">
-        <p>Dark Mode</p>
-        <input type="checkbox" id="switch-mode" hidden>
-        <label for="switch-mode" class="switch-mode"></label>
-    </div>
-		</nav>
+            <i class='bx bx-menu'></i>
+            <!-- mode malam -->
+            <div class="dark-mode-switch">
+                <p>Dark Mode</p>
+                <input type="checkbox" id="switch-mode" hidden>
+                <label for="switch-mode" class="switch-mode"></label>
+            </div>
+        </nav>
 
         <!-- MAIN -->
         <main>
@@ -98,7 +98,7 @@
                             <option value="" disabled selected>-- Pilih Mapel Dan Kelas --</option>
                             <?php foreach ($data as $row): ?>
                                 <option value="<?= htmlspecialchars($row['id']); ?>">
-                                <?= htmlspecialchars($row['kelas']) . ' - ' . htmlspecialchars($row['nama']); ?>
+                                    <?= htmlspecialchars($row['kelas']) . ' - ' . htmlspecialchars($row['nama']); ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
@@ -134,7 +134,7 @@
 
                     <div class="form-group">
                         <label for="tgl-tugas">Tanggal dan Jam Tugas Dibuat</label>
-                        <input type="datetime-local" class="form-control" id="tgl-tugas" name="tgl_tugas" required >
+                        <input type="datetime-local" class="form-control" id="tgl-tugas" name="tgl_tugas" required>
                         <div class="form-hint">Masukkan Tanggal dan Jam Tugas Dibuat</div>
                         <?php if (isset($errors['tanggal_tugas'])): ?>
                             <?php foreach ($errors['tanggal_tugas'] as $error): ?>

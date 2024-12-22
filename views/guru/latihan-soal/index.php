@@ -96,7 +96,7 @@
 			</div>
 			<div class="search-bar-container">
 				<i class="bx bx-search"></i>
-				<input type="text" id="search-input" placeholder="Cari judul...">
+				<input type="text" id="search-input" placeholder="Cari Judul Latihan Soal...">
 				<button type="button" id="search-button">Search</button>
 			</div>
 			<div class="table-container">
